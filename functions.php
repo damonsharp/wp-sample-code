@@ -1,18 +1,17 @@
 <?php
 
+	/**
+	 * ThemeFunctions Class
+	 * 
+	 */
 	class ThemeFunctions {
 
 		/**
-		 * [$opts description]
-		 * @var [type]
+		 * Plugin options
+		 * 
+		 * @var array
 		 */
 		public $opts;
-
-		/**
-		 * [$screen_id description]
-		 * @var [type]
-		 */
-		public $screen_id;
 
 		/**
 		 * Construct
@@ -42,9 +41,9 @@
 		 */
 		public function woocommerce_hooks() {
 
-			/************************************************************************************
-			** Single Product Pages *************************************************************
-			************************************************************************************/
+			/*
+			 * Single Product Pages
+			 */
 
 			// Modify WooCommerce wrappers
 			remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper' );
@@ -94,17 +93,17 @@
 			add_filter( 'woocommerce_add_cart_item_data', array( $this, 'woo_add_only_one_to_cart' ) );
 
 
-			/************************************************************************************
-			** Checkout Page ********************************************************************
-			************************************************************************************/
+			/*
+			 * Checkout Page
+			 */
 			add_filter( 'woocommerce_order_button_html', array( $this, 'modify_woocommerce_checkout_btn' ) );
 
 			// Add bootstap classes for form field groups
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'override_checkout_form_field_groups' ) );
 
-			/************************************************************************************
-			** Shop Page ************************************************************************
-			************************************************************************************/
+			/*
+			 * Shop Page
+			 */
 			add_filter( 'woocommerce_return_to_shop_redirect', array( $this, 'change_return_to_shop_url' ) );
 
 		}
@@ -166,7 +165,7 @@
 		 */
 		public function modify_woocommerce_wrapper_end() {
 
-			echo '</div><!-- end .container -->';
+			echo '</div><!-- /.container -->';
 
 		}
 
@@ -234,7 +233,7 @@
 		public function enqueue_scripts_styles() {
 
 			wp_enqueue_style( 'main', get_stylesheet_uri(), array(), '1.0' );
-			// wp_enqueue_script( 'jquery', false, false, false, true );
+			wp_enqueue_script( 'jquery', false, false, false, true );
 			wp_enqueue_script( 'bootstrapjs', get_stylesheet_directory_uri() . '/assets/js/bootstrap.min.js', array( 'jquery' ), '1.0', true );
 			wp_enqueue_script( 'mainjs', get_stylesheet_directory_uri() . '/assets/js/main.min.js', array( 'jquery', 'bootstrapjs' ), '1.0', true );
 
@@ -252,7 +251,7 @@
 			global $post;
 
 			if ( ! is_null( $post ) ) {
-				$post_type = get_post_type($post->ID);
+				$post_type = get_post_type( $post->ID );
 				// If not services page, etc.
 				if ( ! is_page( 953 ) && ( 'team_members' == $post_type || 'services' == $post_type ) && ! is_single() ) {
 					$title = str_replace( ' ', '<br>', $title );
@@ -441,6 +440,7 @@
 		 * @return array filtered array of fields
 		 */
 		public function override_checkout_form_field_groups( $fields ) {
+
 			foreach ( $fields as $fieldset => $field ) {
 
 				foreach ( $field as $attribute => $value ) {
@@ -512,7 +512,7 @@
 					background-size: auto;
 					width: auto;
 					margin-bottom: 0;
-				}		
+				}	
 			</style>
 		<?php }
 
@@ -538,7 +538,7 @@
 
 		/**
 		 * Restrict access to WordPress Editor (Appearance > Editor in admin)
-		 * for usernam "somuser"
+		 * for username "someuser"
 		 * 
 		 * @param void
 		 * @return void
@@ -553,7 +553,6 @@
 			}
 
 		}
-
 
 	}
 	new ThemeFunctions();

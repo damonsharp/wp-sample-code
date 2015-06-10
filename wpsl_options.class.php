@@ -48,9 +48,9 @@
 
 				foreach ( $this->opts['option_pages'] as $page ) {
 					if ( $page['type'] == 'menu' ) {
-						add_menu_page($page['title'], $page['menu_title'], $page['capability'], $page['menu_slug'], array($this, $page['function']), $page['icon_url'], $page['position']);
+						add_menu_page( $page['title'], $page['menu_title'], $page['capability'], $page['menu_slug'], array( $this, $page['function'] ), $page['icon_url'], $page['position'] );
 					} else {
-						add_submenu_page($page['parent'], $page['title'], $page['menu_title'], $page['capability'], $page['menu_slug'], array($this, $page['function']));
+						add_submenu_page( $page['parent'], $page['title'], $page['menu_title'], $page['capability'], $page['menu_slug'], array( $this, $page['function'] ) );
 					}
 				}
 				$this->modify_menus();
@@ -67,13 +67,13 @@
 			 */
 			public function register_options() {
 				// Register theme options page, create sections and options fields
-				register_setting('wpsl_core', 'wpsl_core', array('SWS_Validation', 'process_options') );
+				register_setting( 'wpsl_core', 'wpsl_core', array( 'SWS_Validation', 'process_options' ) );
 				
 				// Plugin options from config file
 				foreach ( $this->opts['option_pages'] as $page ) {
-					if ( sws_wpsl_page_is($page['menu_slug']) ) {
+					if ( sws_wpsl_page_is( $page['menu_slug'] ) ) {
 						$this->view_src = $page['view_src'];
-						add_settings_section( $page['menu_slug'], $page['title'], array($this, 'option_page_content'), $page['menu_slug'] );
+						add_settings_section( $page['menu_slug'], $page['title'], array( $this, 'option_page_content' ), $page['menu_slug'] );
 					}
 				}
 			}

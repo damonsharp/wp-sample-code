@@ -25,7 +25,7 @@
 			 */
 			public function __construct() {
 				// Must be called at 'init'
-				add_action('init', array($this, 'initialize'));
+				add_action( 'init', array( $this, 'initialize' ) );
 			}
 
 
@@ -51,7 +51,6 @@
 					add_filter( 'sws_wpsl_options', array( $this, 'merge_stats_options' ) );
 					add_action( 'init', array( $this, 'setup_autoload' ) );				
 					add_action( 'init', array( $this, 'instantiate_classes' ) );
-					//add_action( 'sws_wpsl_output_addons_options', function(){ sws_get_plugin_part(SWS_WPSL_OPTIONS_PAGES, 'sws_wpsl_dashboard'); }, 10 );
 				}
 
 			}
@@ -67,7 +66,7 @@
 			public function setup_autoload() {
 
 				// Load any helper functions
-				// require_once(SWS_WPSL_STATS_HELPERS . 'sws_wpsl_stats_helpers.php');
+				require_once( SWS_WPSL_STATS_HELPERS . 'sws_wpsl_stats_helpers.php' );
 
 				// Autoload any needed classes
 				spl_autoload_register( array( $this, 'autoload_stats_classes' ) );
@@ -103,92 +102,92 @@
 
 				// Plugin name
 				if ( ! defined( 'SWS_WPSL_STATS_PLUGIN_NAME' ) ) {
-					define('SWS_WPSL_STATS_PLUGIN_NAME', 'SWS WP Sports Leagues Statistics Addon');
+					define( 'SWS_WPSL_STATS_PLUGIN_NAME', 'SWS WP Sports Leagues Statistics Addon' );
 				}
 
 				// Plugin file name
 				if ( ! defined( 'SWS_WPSL_STATS_PLUGIN_FILE' ) ) {
-					define('SWS_WPSL_STATS_PLUGIN_FILE', plugin_basename(__FILE__));
+					define( 'SWS_WPSL_STATS_PLUGIN_FILE', plugin_basename(__FILE__));
 				}
 
 				// Plugin version
 				if ( ! defined( 'SWS_WPSL_STATS_VERSION' ) ) {
-					define('SWS_WPSL_STATS_VERSION', '1.0.0');
+					define( 'SWS_WPSL_STATS_VERSION', '1.0.0' );
 				}
 
 				// WPSM current database version
 				if ( ! defined( 'SWS_WPSL_STATS_DB_VERSION' ) ) {
-					define('SWS_WPSL_STATS_DB_VERSION', 1);
+					define( 'SWS_WPSL_STATS_DB_VERSION', 1);
 				}
 
 				// WordPress compatibility version number
 				if ( ! defined( 'SWS_WPSL_STATS_REQUIRED_WP_VERSION' ) ) {
-					define('SWS_WPSL_STATS_REQUIRED_WP_VERSION', '3.5.2');
+					define( 'SWS_WPSL_STATS_REQUIRED_WP_VERSION', '3.5.2' );
 				}
 
 				// WPSM required PHP version
 				if ( ! defined( 'SWS_WPSL_STATS_REQUIRED_PHP_VERSION' ) ) {
-					define('SWS_WPSL_STATS_REQUIRED_PHP_VERSION', '5.3.0');
+					define( 'SWS_WPSL_STATS_REQUIRED_PHP_VERSION', '5.3.0' );
 				}
 
 				// Plugin Website URL
 				if ( ! defined( 'SWS_WPSL_STATS_PLUGIN_URL' ) ) {
-					define('SWS_WPSL_STATS_PLUGIN_URL', 'http://wpsportsleaguesplug.in/addons');
+					define( 'SWS_WPSL_STATS_PLUGIN_URL', 'http://wpsportsleaguesplug.in/addons' );
 				}
 
 				// Plugin Support URL
 				if ( ! defined( 'SWS_WPSL_STATS_SUPPORT_URL' ) ) {
-					define('SWS_WPSL_STATS_SUPPORT_URL', 'http://wpsportsleaguesplug.in/support');
+					define( 'SWS_WPSL_STATS_SUPPORT_URL', 'http://wpsportsleaguesplug.in/support' );
 				}
 
 				// Skip choosing a sport to install
 				if ( ! defined( 'SWS_WPSL_STATS_SKIP_INSTALL' ) ) {
-					define('SWS_WPSL_STATS_SKIP_INSTALL', FALSE);
+					define( 'SWS_WPSL_STATS_SKIP_INSTALL', FALSE);
 				}
 
 				// Plugin path
 				if ( ! defined( 'SWS_WPSL_STATS_PATH' ) ) {
-					define('SWS_WPSL_STATS_PATH', plugin_dir_path(__FILE__));
+					define( 'SWS_WPSL_STATS_PATH', plugin_dir_path(__FILE__));
 				}
 
 				// Controller directory
 				if ( ! defined( 'SWS_WPSL_STATS_OPTIONS' ) ) {
-					define('SWS_WPSL_STATS_OPTIONS', SWS_WPSL_STATS_PATH . 'options/');
+					define( 'SWS_WPSL_STATS_OPTIONS', SWS_WPSL_STATS_PATH . 'options/' );
 				}
 
 				// Controller directory
 				if ( ! defined( 'SWS_WPSL_STATS_CLASSES' ) ) {
-					define('SWS_WPSL_STATS_CLASSES', SWS_WPSL_STATS_PATH . 'classes/');
+					define( 'SWS_WPSL_STATS_CLASSES', SWS_WPSL_STATS_PATH . 'classes/' );
 				}
 
 				// Views directory
 				if ( ! defined( 'SWS_WPSL_STATS_VIEW' ) ) {
-					define('SWS_WPSL_STATS_VIEW', SWS_WPSL_STATS_PATH . 'views/');
+					define( 'SWS_WPSL_STATS_VIEW', SWS_WPSL_STATS_PATH . 'views/' );
 				}
 
 				// Pages view directory
 				if ( ! defined( 'SWS_WPSL_STATS_PAGES' ) ) {
-					define('SWS_WPSL_STATS_PAGES', SWS_WPSL_STATS_VIEW . 'pages/');
+					define( 'SWS_WPSL_STATS_PAGES', SWS_WPSL_STATS_VIEW . 'pages/' );
 				}
 
 				// Pages view directory
 				if ( ! defined( 'SWS_WPSL_STATS_OPTIONS_PAGES' ) ) {
-					define('SWS_WPSL_STATS_OPTIONS_PAGES', SWS_WPSL_STATS_VIEW . 'pages/options/');
+					define( 'SWS_WPSL_STATS_OPTIONS_PAGES', SWS_WPSL_STATS_VIEW . 'pages/options/' );
 				}
 
 				// Dashboard widgets pages view directory
 				if ( ! defined( 'SWS_WPSL_STATS_DASHBOARD_WIDGET_PAGES' ) ) {
-					define('SWS_WPSL_STATS_DASHBOARD_WIDGET_PAGES', SWS_WPSL_STATS_VIEW . 'pages/dashboard_widgets/');
+					define( 'SWS_WPSL_STATS_DASHBOARD_WIDGET_PAGES', SWS_WPSL_STATS_VIEW . 'pages/dashboard_widgets/' );
 				}
 
 				// Partials view directory
 				if ( ! defined( 'SWS_WPSL_STATS_PARTIALS' ) ) {
-					define('SWS_WPSL_STATS_PARTIALS', SWS_WPSL_STATS_VIEW . 'partials/');
+					define( 'SWS_WPSL_STATS_PARTIALS', SWS_WPSL_STATS_VIEW . 'partials/' );
 				}
 
 				// Helper directory
 				if ( ! defined( 'SWS_WPSL_STATS_HELPERS' ) ) {
-					define('SWS_WPSL_STATS_HELPERS', SWS_WPSL_STATS_PATH . 'helpers/');
+					define( 'SWS_WPSL_STATS_HELPERS', SWS_WPSL_STATS_PATH . 'helpers/' );
 				}
 
 				// Includes directory

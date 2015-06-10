@@ -28,12 +28,14 @@
 		 *
 		 * @param array $args
 		 * @param array $instance
+		 * @return html
 		 */
 		public function widget( $args, $instance ) {
 			
 			$cta_widget = get_post( $instance['cta_widget_choice'], 'OBJECT', 'display' );
 			$cta_widget_meta_link = get_post_meta( $cta_widget->ID, '_call_to_action_link', true );
 			$cta_widget_meta_link_new_window = get_post_meta( $cta_widget->ID, '_call_to_action_link_new_window', true ); ?>
+			
 			<?php if ( $cta_widget ) {
 				echo $args['before_widget']; ?>
 				<div class="cta-widget-item <?php echo $instance['cta_widget_background']; ?>">
