@@ -6,6 +6,8 @@ if ( ! class_exists( 'MBB_Players' ) ) :
 	 * Monarch Baseball Players
 	 *
 	 * Create custom post type, taxonomies, and metaboxes for players
+	 *
+	 * @uses  WordPress Fieldmanager plugin (http://fieldmanager.org)
 	 */
 	class MBB_Players {
 
