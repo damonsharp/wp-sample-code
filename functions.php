@@ -67,6 +67,12 @@
     add_filter( 'max_srcset_image_width', 'mbb_max_srcset_image_width', 10, 2 );
 
 
+    function mbb_add_image_sizes() {
+        add_image_size( 'mbb-post-large', 747, 9999, false );
+    }
+    add_action( 'after_setup_theme', 'mbb_add_image_sizes' );
+
+
     /*
     |---------------------------------------------------------------------
     | Enqueue scripts and styles
@@ -94,10 +100,12 @@
     |
     */
     function mbb_get_page_template_parts() {
-        $pages = get_posts( [
-            'posts_per_page' => -1,
-            'post_type' => 'page',
-        ] );
+        $pages = get_posts(
+            [
+                'posts_per_page' => 100,
+                'post_type' => 'page',
+            ]
+        );
         if ( ! empty( $pages ) ) {
             foreach ( $pages as $page ) {
                 if ( is_page( $page->post_name ) ) {
@@ -141,5 +149,11 @@
         $classes = get_body_class();
         if ( ! empty( $classes ) && is_array( $classes) && ! in_array( $search, $classes ) ) {
             get_sidebar();
+        }
+    }
+
+    function mbb_get_template_part( $template_part ) {
+        if ( ! empty( $template_part ) ) {
+            require_once( locate_template( $template_part ) );
         }
     }
