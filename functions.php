@@ -6,6 +6,12 @@
 |---------------------------------------------------------------------
 |
 */
+
+/**
+ * Check theme dependencies
+ *
+ * @return void
+ */
 function check_theme_dependencies() {
 	if ( ! defined( 'MBB_PLUGIN_DIR' ) ) {
 		add_action( 'admin_notices', 'mbb_warning' );
@@ -13,6 +19,11 @@ function check_theme_dependencies() {
 }
 add_action( 'init', 'check_theme_dependencies' );
 
+/**
+ * Warning message
+ *
+ * @return string message html
+ */
 function mbb_warning() {
 	$html = '<div class ="update-nag"><p>%s</p></div>';
 	$msg  = 'The MBB Theme Companion plugin is not activated. Please make sure it is installed and activated before continuing.';
@@ -26,6 +37,12 @@ function mbb_warning() {
 |---------------------------------------------------------------------
 |
 */
+
+/**
+ * Set up theme/require classes
+ *
+ * @return void
+ */
 function mbb_setup_theme() {
 	// Theme options page
 	if ( defined( 'FM_VERSION' ) && defined( 'MBB_PLUGIN_DIR' ) ) {
@@ -37,6 +54,12 @@ function mbb_setup_theme() {
 }
 add_action( 'init', 'mbb_setup_theme' );
 
+/**
+ * Filter the body classes
+ *
+ * @param  array $classes
+ * @return array modified classes
+ */
 function mbb_filter_body_class( $classes ) {
 	global $post;
 	if ( ! empty( $post->post_type ) ) {
@@ -61,12 +84,23 @@ function mbb_filter_body_class( $classes ) {
 }
 add_filter( 'body_class', 'mbb_filter_body_class' );
 
+/**
+ * Filter the srcset image width
+ *
+ * @param  integer $max_width  the srcset width
+ * @param  array $size_array sizes width|height
+ * @return integer width
+ */
 function mbb_max_srcset_image_width( $max_width, $size_array ) {
 	return 800;
 }
 add_filter( 'max_srcset_image_width', 'mbb_max_srcset_image_width', 10, 2 );
 
-
+/**
+ * Add custom image sizes
+ *
+ * @return void
+ */
 function mbb_add_image_sizes() {
 	add_image_size( 'mbb-post-large', 747, 9999, false );
 }
@@ -99,13 +133,18 @@ add_action( 'wp_enqueue_scripts', 'mbb_enqueue_scripts_styles' );
 |---------------------------------------------------------------------
 |
 */
+
+/**
+ * For every page loop through and grab the template
+ * part based on the page name
+ *
+ * @return void
+ */
 function mbb_get_page_template_parts() {
-	$pages = get_posts(
-		[
-			'posts_per_page' => 100,
-			'post_type' => 'page',
-		]
-	);
+	$pages = get_posts( [
+		'posts_per_page' => 100,
+		'post_type' => 'page',
+	] );
 	if ( ! empty( $pages ) ) {
 		foreach ( $pages as $page ) {
 			if ( is_page( $page->post_name ) ) {
@@ -152,6 +191,12 @@ function mbb_get_footer() {
 	}
 }
 
+/**
+ * Load template using core function for inclusion of global
+ * variables
+ * @param  string $template_part the template part
+ * @return void
+ */
 function mbb_get_template_part( $template_part ) {
 	if ( ! empty( $template_part ) ) {
 		require_once( locate_template( $template_part ) );
