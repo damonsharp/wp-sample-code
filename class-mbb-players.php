@@ -23,8 +23,8 @@ if ( ! class_exists( 'MBB_Players' ) ) :
 		 * @var array
 		 */
 		private $replace = [
-			'Upload player's photo',
-			'Remove player's photo',
+			"Upload player's photo",
+			"Remove player's photo",
 		];
 
 		private $grades = [
@@ -53,7 +53,7 @@ if ( ! class_exists( 'MBB_Players' ) ) :
 		private $positions = [
 			'RHP'	=> 'Right Handed Pitcher (RHP)',
 			'LHP'	=> 'Left Handed Pitcher (LHP)',
-			'C'	=> 'Catcher (C)',
+			'C'		=> 'Catcher (C)',
 			'1B'	=> 'First Base (1B)',
 			'2B'	=> 'Second Base (2B)',
 			'3B'	=> 'Third Base (3B)',
