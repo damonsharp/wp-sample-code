@@ -1,61 +1,83 @@
-// Process the contact form via ajax
+/*
+Contact form submission for monarchbaseball.com
+ */
 var MBB = MBB || {};
 
-( function( $ ) {
+document.addEventListener('DOMContentLoaded', () => {
 
-    MBB.Contact = {
+	MBB.Contact = {
 
-        init: function() {
-            this.processContactForm();
-        },
+		init: function() {
+			const contactForm = document.querySelector('.contact-form');
 
-        processContactForm: function() {
-            var self = this;
-            $( '.contact-form' ).on( 'submit', function( e ) {
-                e.preventDefault();
-                var $contactForm = $( this ),
-                    $formBtn = $( '#contact-submit' ),
-                    $formMsg = $( '.form-msg' ),
-                    $formErrorMsg = $( '.error-msg' ),
-                    $formSuccessMsg = $( '.success-msg' ),
-                    $formAction  = $contactForm.attr( 'action' ),
-                    $formData    = $contactForm.serialize() + '&action=' + mbbAjax.action;
-                // Remove form messages
-                $formMsg.addClass( 'hidden' );
-                // Disable form submit
-                $formBtn.attr( 'disable', true );
-                // Remove errors class
-                $( '.error' ).removeClass( 'error' );
-                $.ajax( {
-                    type: "post",
-                    dataType: "json",
-                    url: $formAction,
-                    data: $formData,
-                    success: function( response ) {
-                        $formBtn.attr( 'disable', false );
-                        if ( 'errors' === response.status && response.payload ) {
-                            $formErrorMsg.removeClass( 'hidden' );
-                            var errors = response.payload,
-                                name;
-                            for ( name in errors ) {
-                                $( '#' + name ).parent( 'p' ).addClass( 'error' );
-                            }
-                        }
-                        if ( 'success' === response.status ){
-                            $formSuccessMsg.removeClass( 'hidden' );
-                            self.clearForm( $contactForm );
-                        }
-                    }
-                } );
-            } );
-        },
+			contactForm.addEventListener('submit', (e) => {
+				e.preventDefault();
+				const formData = new FormData(contactForm);
+				const formBtn = contactForm.querySelector('#contact-submit');
+				const formErrorMsg = contactForm.querySelector('.error-msg');
+				const formSuccessMsg = contactForm.querySelector('.success-msg');
 
-        clearForm: function( $form ) {
-            $form.find( 'input[type=text], input[type=email], textarea' ).val( '' );
-        }
+				// Clear the form messages
+				this.removeFormMessages(contactForm);
 
-    }
+				// Disable form submit until processed
+				this.disableFormBtn(formBtn);
 
-    MBB.Contact.init();
+				// Submit the ajax request
+				fetch(mbbContact.ajaxUrl, {
+					method: 'post',
+					body: formData,
+				}).then((response) => {
+					return response.json();
+				}).then((response) => {
+					this.enableFormBtn(formBtn);
+					if ('errors' === response.status && response.payload) {
+						formErrorMsg.classList.remove('hidden');
+						for (let name in response.payload) {
+							document.querySelector(`#${name}`).parentNode.classList.add('error');
+						}
+					}
+					if ('success' === response.status) {
+						formSuccessMsg.classList.remove('hidden');
+						this.clearFormInputs(contactForm);
+					}
+				});
+			});
+		},
 
-} )( jQuery );
+		removeFormMessages: (contactForm) => {
+			// Clear success and error messages
+			const formMsgs = contactForm.querySelectorAll('.form-msg');
+			[...formMsgs].forEach((el) => {
+				el.classList.add('hidden');
+			});
+
+			// Clear form field error formatting
+			const formFieldErrors = contactForm.querySelectorAll('.error');
+			[...formFieldErrors].forEach((el) => {
+				el.classList.remove('error');
+			});
+		},
+
+		clearFormInputs: (contactForm) => {
+			const contactFormFields = contactForm.querySelectorAll('input[type=text], input[type=email], textarea');
+			[...contactFormFields].forEach((el) => {
+				el.value = '';
+			});
+		},
+
+		disableFormBtn: (formBtn) => {
+			formBtn.setAttribute('disabled', 'disabled');
+			formBtn.classList.add('disabled');
+		},
+
+		enableFormBtn: (formBtn) => {
+			formBtn.removeAttribute('disabled');
+			formBtn.classList.remove('disabled');
+		}
+
+	}
+
+	MBB.Contact.init();
+
+});

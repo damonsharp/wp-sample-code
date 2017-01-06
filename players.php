@@ -1,6 +1,6 @@
 <?php $players = MBB_Query()->get_players(); ?>
 <?php if ( ! empty( $players ) ) : ?>
-	<?php foreach( $players as $post ) : setup_postdata( $post ); ?>
+	<?php foreach ( $players as $post ) : setup_postdata( $post ); ?>
 	<?php $player_meta = get_post_meta( $post->ID, 'player_details', true ); ?>
 	<article class="player">
 		<div class="portrait-container">
@@ -21,7 +21,7 @@
 			<?php if ( ! empty( $player_meta['details']['grade'] ) ) : ?>
 				<p>
 					<strong>Grade:</strong>
-					<?php echo ucwords( esc_html( $player_meta['details']['grade'] ) ); ?>
+					<?php echo esc_html( ucwords( $player_meta['details']['grade'] ) ); ?>
 				</p>
 			<?php endif; ?>
 			<?php if ( ! empty( $player_meta['details']['positions'] ) ) : ?>

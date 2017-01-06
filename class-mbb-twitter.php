@@ -119,7 +119,7 @@ if ( ! class_exists( 'MBB_Twitter' ) ) :
 
 				if ( ! empty( $response_body ) ) {
 					$response_body_obj = json_decode( $response_body );
-					if ( ! empty( $response_body_obj->access_token ) && 'bearer' == $response_body_obj->token_type ) {
+					if ( ! empty( $response_body_obj->access_token ) && 'bearer' === $response_body_obj->token_type ) {
 						return $response_body_obj->access_token;
 					}
 				}
@@ -137,7 +137,7 @@ if ( ! class_exists( 'MBB_Twitter' ) ) :
 		 */
 		private function get_tweets_with_bearer_token( $bearer_token, $count, $transient_key ) {
 			$tweets = [];
-			$twitter_username	= $this->get_twitter_setting( 'username' );
+			$twitter_username = $this->get_twitter_setting( 'username' );
 			$url = sprintf( $this->timeline_request_uri, $twitter_username );
 			$tweets_response = wp_remote_get(
 				$url,
@@ -187,7 +187,9 @@ if ( ! class_exists( 'MBB_Twitter' ) ) :
 					$formatted_tweets[ $i ]['avatar'] = ( ! empty( $tweet->user->profile_image_url_https ) ) ? $tweet->user->profile_image_url_https : '';
 					// We're grabbing 50 tweets, which should be sufficient,
 					// then limiting the number returned by passing in a count
-					if ( $count == $i ) break;
+					if ( $count === $i ) {
+						break;
+					}
 					$i++;
 				}
 			}
@@ -205,7 +207,7 @@ if ( ! class_exists( 'MBB_Twitter' ) ) :
 			if ( empty( $twitter_setting ) ) {
 				return;
 			}
-			return urlencode( $twitter_setting );
+			return rawurlencode( $twitter_setting );
 		}
 
 	}

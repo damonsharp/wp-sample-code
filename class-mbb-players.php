@@ -23,8 +23,8 @@ if ( ! class_exists( 'MBB_Players' ) ) :
 		 * @var array
 		 */
 		private $replace = [
-			"Upload player's photo",
-			"Remove player's photo"
+			'Upload player's photo',
+			'Remove player's photo',
 		];
 
 		private $grades = [
@@ -38,7 +38,7 @@ if ( ! class_exists( 'MBB_Players' ) ) :
 		private $bats = [
 			'L' => 'Left',
 			'R' => 'Right',
-			'B' => "Both",
+			'B' => 'Both',
 		];
 
 		private $throws = [
@@ -146,11 +146,11 @@ if ( ! class_exists( 'MBB_Players' ) ) :
 						'label' => 'Details',
 						'children' => [
 							// Player's Grade
-							'grade' => new Fieldmanager_Radios( "Current Grade/Status:", [
+							'grade' => new Fieldmanager_Radios( 'Current Grade/Status:', [
 								'options' => $this->grades,
 								'default_value' => 'freshman',
 							] ),
-							'grad_year' => new Fieldmanager_Textfield( "Year Graduated", [
+							'grad_year' => new Fieldmanager_Textfield( 'Year Graduated', [
 								'display_if' => [
 									'src'	=> 'grade',
 									'value' => 'grad',
@@ -161,47 +161,47 @@ if ( ! class_exists( 'MBB_Players' ) ) :
 								],
 							] ),
 							// Player's Position(s)
-							'positions' => new Fieldmanager_Checkboxes( "Position(s):", [
+							'positions' => new Fieldmanager_Checkboxes( 'Position(s):', [
 								'options' => $this->positions,
 							] ),
 							// Player's batting direction
-							'bats' => new Fieldmanager_Radios( "Bats:", [
+							'bats' => new Fieldmanager_Radios( 'Bats:', [
 								'options' => $this->bats,
 								'default_value' => 'R',
 							] ),
 							// Player's throwing hand
-							'throws' => new Fieldmanager_Radios( "Throws:", [
+							'throws' => new Fieldmanager_Radios( 'Throws:', [
 								'options' => $this->throws,
 								'default_value' => 'R',
 							] ),
 							// Player's height
-							'height_feet' => new Fieldmanager_Textfield( "Height:", [
+							'height_feet' => new Fieldmanager_Textfield( 'Height:', [
 								'attributes' => [
 									'size' => 3,
-									'maxlength' => 1
+									'maxlength' => 1,
 								],
 							] ),
-							'height_inches' => new Fieldmanager_Textfield( "", [
-								'attributes' => [
-									'size' => 4,
-									'maxlength' => 2
-								],
-							] ),
-							// Player's weight
-							'weigth' => new Fieldmanager_Textfield( "Weight (lbs):", [
-								'attributes' => [
-									'size' => 5,
-									'maxlength' => 3
-								],
-							] ),
-							// Player's jersey numbers
-							'jersey_spring' => new Fieldmanager_Textfield( "Spring Jersey Number:", [
+							'height_inches' => new Fieldmanager_Textfield( '', [
 								'attributes' => [
 									'size' => 4,
 									'maxlength' => 2,
 								],
 							] ),
-							'jersey_summer' => new Fieldmanager_Textfield( "Summer Jersey Number:", [
+							// Player's weight
+							'weigth' => new Fieldmanager_Textfield( 'Weight (lbs):', [
+								'attributes' => [
+									'size' => 5,
+									'maxlength' => 3,
+								],
+							] ),
+							// Player's jersey numbers
+							'jersey_spring' => new Fieldmanager_Textfield( 'Spring Jersey Number:', [
+								'attributes' => [
+									'size' => 4,
+									'maxlength' => 2,
+								],
+							] ),
+							'jersey_summer' => new Fieldmanager_Textfield( 'Summer Jersey Number:', [
 								'description' => 'Leave Summer Jersey Number blank if not playing on a summer team or if both numbers are the same',
 								'attributes'	=> [
 									'size' => 4,
@@ -241,13 +241,13 @@ if ( ! class_exists( 'MBB_Players' ) ) :
 						'label' => 'Miscellaneous',
 						'children' => [
 							// Player's favorite song
-							'fav_song' => new Fieldmanager_Textfield( "Favorite song:" ),
+							'fav_song' => new Fieldmanager_Textfield( 'Favorite song:' ),
 							// Player's favorite MLB team
-							'fav_mlb_team' => new Fieldmanager_Textfield( "Favorite MLB team:" ),
+							'fav_mlb_team' => new Fieldmanager_Textfield( 'Favorite MLB team:' ),
 							// Player's favorite MLB player
-							'fav_mlb_player' => new Fieldmanager_Textfield( "Favorite MLB player:" ),
+							'fav_mlb_player' => new Fieldmanager_Textfield( 'Favorite MLB player:' ),
 							// Player's favorite inspirational quote
-							'fav_quote' => new Fieldmanager_Textarea( "Favorite inspirational quote:", [
+							'fav_quote' => new Fieldmanager_Textarea( 'Favorite inspirational quote:', [
 								'attributes'  => [
 									'style' => 'width: 100%; height: 120px',
 								],

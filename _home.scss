@@ -1,298 +1,298 @@
 .home {
-    .divider {
-        display: none;
-    }
-    #body-content {
-        margin-top: 0;
-    }
-    section {
-        h3 {
-            @include font-size( 3 );
-        }
-    }
-    #primary {
-        padding-left: 0;
-        padding-right: 0;
-        @include span( full );
-        > section {
-            margin: 0;
-            padding: 1.5em;
-            clear: both;
-            &.teams {
-                @include span( full );
-                background-color: $monarchRed;
-                color: $white;
-            }
-            &.coaches {
-                @include span( full );
-                background-color: $white;
-            }
-            &.players {
-                @include span( full );
-                background-color: $accentGrayLt;
-                color: $white;
-            }
-        }
-    }
-    #hero {
-        background-image: url(assets/img/monarch_field.jpg);
-        background-position: center top;
-        background-repeat: no-repeat;
-        background-size: 100% auto;
-        height: auto;
-        @include breakpoint( $break-md ){
-            background-position: center -5em;
-            height: 12em;
-        }
-        @include breakpoint( $break-lg ){
-            height: 30em;
-        }
-        h1 {
-            color: #ffffff;
-            font-weight: 200;
-            text-shadow: 0 0 3px rgba(0,0,0,0.6);
-            @include text-align( center );
-            line-height: 1.2em;
-            font-family: 'Graduate', sans-serif;
-            @include breakpoint( $break-only-sm ) {
-                @include font-size( 1.4 );
-            }
-            @include breakpoint( $break-md ) {
-                @include font-size( 2.5 );
-                margin-top: 0.5em;
-                margin-bottom: 0.35em;
-            }
-            @include breakpoint( $break-lg ) {
-                margin-top: 2.5em;
-                margin-bottom: 1em;
-                @include font-size( 4 );
-            }
-        }
-    }
-    .touts {
-        @include breakpoint( $break-only-sm ) {
-            margin-top: 40%;
-        }
-        @include breakpoint( $break-lg ) {
-            // @include layout( $hero-touts );
-            @include susy-clearfix();
-            background-color: transparent;
-            text-align: left;
+	.divider {
+		display: none;
+	}
+	#body-content {
+		margin-top: 0;
+	}
+	section {
+		h3 {
+			@include font-size( 3 );
+		}
+	}
+	#primary {
+		padding-left: 0;
+		padding-right: 0;
+		@include span( full );
+		> section {
+			margin: 0;
+			padding: 1.5em;
+			clear: both;
+			&.teams {
+				@include span( full );
+				background-color: $monarchRed;
+				color: $white;
+			}
+			&.coaches {
+				@include span( full );
+				background-color: $white;
+			}
+			&.players {
+				@include span( full );
+				background-color: $accentGrayLt;
+				color: $white;
+			}
+		}
+	}
+	#hero {
+		background-image: url(assets/img/monarch_field.jpg);
+		background-position: center top;
+		background-repeat: no-repeat;
+		background-size: 100% auto;
+		height: auto;
+		@include breakpoint( $break-md ){
+			background-position: center -5em;
+			height: 12em;
+		}
+		@include breakpoint( $break-lg ){
+			height: 30em;
+		}
+		h1 {
+			color: #ffffff;
+			font-weight: 200;
+			text-shadow: 0 0 3px rgba(0,0,0,0.6);
+			@include text-align( center );
+			line-height: 1.2em;
+			font-family: 'Graduate', sans-serif;
+			@include breakpoint( $break-only-sm ) {
+				@include font-size( 1.4 );
+			}
+			@include breakpoint( $break-md ) {
+				@include font-size( 2.5 );
+				margin-top: 0.5em;
+				margin-bottom: 0.35em;
+			}
+			@include breakpoint( $break-lg ) {
+				margin-top: 2.5em;
+				margin-bottom: 1em;
+				@include font-size( 4 );
+			}
+		}
+	}
+	.touts {
+		@include breakpoint( $break-only-sm ) {
+			margin-top: 40%;
+		}
+		@include breakpoint( $break-lg ) {
+			// @include layout( $hero-touts );
+			@include susy-clearfix();
+			background-color: transparent;
+			text-align: left;
 
-        }
-        > header {
-            @include breakpoint( $break-only-sm ) {
-                padding-top: 1em;
-            }
-        }
-        > div {
-            @include span( full );
-            @include breakpoint( $break-md ) {
-                @include span ( 6 of 12 );
-            }
-            @include breakpoint( $break-lg ) {
-                @include span( 4 of 12 );
-            }
-            &:last-of-type {
-                .widget {
-                    margin-right: 0;
-                }
-            }
-        }
-        .widget {
-            @include breakpoint( $break-lg ) {
-                padding: 1em;
-                background-color: transparentize( #ffffff, 0.25 );
-                margin-right: 1.5em;
-                border-radius: .2em;
-                min-height: 22em;
-            }
-            a {
-                color: $monarchBlueDrk;
-                &:hover {
-                    color: $monarchBlue;
-                }
-                text-decoration: none;
-            }
-        }
-        h3 {
-            color: $accentGrayDrk;
-            padding-bottom: 0.2em;
-            border-bottom: 1px solid $white;
-        }
-    }
-    #page-content {
-        @include breakpoint( $break-lg ) {
-            @include span( 8 of 12 );
-        }
-    }
-    #secondary {
-        @include breakpoint( $break-lg ) {
-            @include span( 4 of 12 );
-        }
-    }
-    .hp-news {
-        .post {
-            padding: 1.5em;
-            background: $white;
-            margin-bottom: 1.5em;
-            &:last-of-type {
-                margin-bottom: 0;
-            }
-            footer {
-                @include font-size( 0.8 );
-                border-top: 1px solid $offWhite;
-                color: $accentGrayLt;
-                padding-top: 0.5em;
-            }
-            .attachment-post-thumbnail {
-                margin-bottom: 1em;
-            }
-        }
-        h4 {
-            @include font-size( 1.8 );
-            a {
-                text-decoration: none;
-            }
-        }
-    }
-    .players {
-        h3 {
-            text-shadow: 0 0 2px $black;
-        }
-    }
-    .hp-player,
-    .hp-coach {
-        color: $white;
-        @include susy-clearfix();
-        text-decoration: none;
-        display: block;
-        &:hover {
-            > div {
-                background-color: rgba( 0, 0, 0, 0.01 );
-            }
-        }
-        @include breakpoint( $break-only-sm ) {
-            margin-bottom: 1.5em;
-        }
-        @include breakpoint( $break-md ) {
-            @include span( 6 of 12 0.3 after );
-            margin-bottom: 1.5em;
-            margin-right: 0;
-            &:nth-of-type( 3n ) {
-                clear: left;
-            }
-            &:nth-of-type( 2n ) {
-                clear: right;
-            }
-        }
-        a {
-            display: block;
-            &, &:hover {
-                color: $white;
-            }
-        }
-        h4 {
-            @include font-size( 1.5 );
-        }
-        > div {
-            @include susy-clearfix();
-            border-radius: 3px;
-            padding: 1.5em;
-            background-color: rgba( 0, 0, 0, 0.03 );
-            box-shadow: inset 0 0 8px rgba( 0, 0, 0, 0.1 );
-            @include breakpoint( $break-md ) {
-                @include post( 0.75em );
-            }
-        }
-        &:nth-of-type( even ) {
-            > div {
-                @include breakpoint( $break-md ) {
-                    @include pre( 0.75em );
-                    @include post( 0 );
-                }
-            }
-        }
-        .portrait {
-            @include breakpoint( $break-md ) {
-                @include span( 4 of 12 );
-            }
-            .wp-post-image {
-                margin-bottom: 0;
-            }
-        }
-        .details {
-            @include breakpoint( $break-md ) {
-                @include span( 8 of 12 );
-                padding-left: 1.5em;
-                margin: 0;
-            }
-        }
-    }
-    .hp-coach {
-        color: inherit;
-        display: block;
-    }
-    .teams {
-        h3 {
-            text-shadow: 0 0 2px $black;
-        }
-        article {
-            @include breakpoint( $break-only-sm ) {
-                margin-bottom: 1.5em;
-            }
-            @include breakpoint( $break-md ) {
-                @include span( 4 of 12 0.3 after );
-                &:last-of-type {
-                    margin-right: 0;
-                }
-            }
-                > a {
-                    display: block;
-                    background-color: rgba(255, 255, 255, 0.1);
-                    padding: 1.5em;
-                    border-radius: 3px;
-                    &, &:hover {
-                        text-decoration: none;
-                        color: $white;
-                    }
-                    &:hover {
-                        background-color: rgba(255, 255, 255, 0.12);
-                    }
-                }
-        }
-    }
-    .sponsors {
-        article {
-            @include breakpoint( $break-md ) {
-                @include span( 4 of 12 0.3 after );
-                &:last-of-type {
-                    margin-right: 0;
-                }
-                > a {
-                    display: block;
-                    background-color: rgba(255, 255, 255, 0.1);
-                    padding: 1.5em;
-                    border-radius: 3px;
-                    &, &:hover {
-                        text-decoration: none;
-                        color: $white;
-                    }
-                    &:hover {
-                        background-color: rgba(255, 255, 255, 0.12);
-                    }
-                }
-                .logo {
-                    text-align: center;
-                }
-            }
-        }
-    }
-    .sponsor {
-        @include breakpoint( $break-md ) {
-            padding: 1.5em;
-            @include span( 3 of 12 );
-            min-height: 230px;
-        }
-    }
+		}
+		> header {
+			@include breakpoint( $break-only-sm ) {
+				padding-top: 1em;
+			}
+		}
+		> div {
+			@include span( full );
+			@include breakpoint( $break-md ) {
+				@include span ( 6 of 12 );
+			}
+			@include breakpoint( $break-lg ) {
+				@include span( 4 of 12 );
+			}
+			&:last-of-type {
+				.widget {
+					margin-right: 0;
+				}
+			}
+		}
+		.widget {
+			@include breakpoint( $break-lg ) {
+				padding: 1em;
+				background-color: transparentize( #ffffff, 0.25 );
+				margin-right: 1.5em;
+				border-radius: .2em;
+				min-height: 22em;
+			}
+			a {
+				color: $monarchBlueDrk;
+				&:hover {
+					color: $monarchBlue;
+				}
+				text-decoration: none;
+			}
+		}
+		h3 {
+			color: $accentGrayDrk;
+			padding-bottom: 0.2em;
+			border-bottom: 1px solid $white;
+		}
+	}
+	#page-content {
+		@include breakpoint( $break-lg ) {
+			@include span( 8 of 12 );
+		}
+	}
+	#secondary {
+		@include breakpoint( $break-lg ) {
+			@include span( 4 of 12 );
+		}
+	}
+	.hp-news {
+		.post {
+			padding: 1.5em;
+			background: $white;
+			margin-bottom: 1.5em;
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+			footer {
+				@include font-size( 0.8 );
+				border-top: 1px solid $offWhite;
+				color: $accentGrayLt;
+				padding-top: 0.5em;
+			}
+			.attachment-post-thumbnail {
+				margin-bottom: 1em;
+			}
+		}
+		h4 {
+			@include font-size( 1.8 );
+			a {
+				text-decoration: none;
+			}
+		}
+	}
+	.players {
+		h3 {
+			text-shadow: 0 0 2px $black;
+		}
+	}
+	.hp-player,
+	.hp-coach {
+		color: $white;
+		@include susy-clearfix();
+		text-decoration: none;
+		display: block;
+		&:hover {
+			> div {
+				background-color: rgba( 0, 0, 0, 0.01 );
+			}
+		}
+		@include breakpoint( $break-only-sm ) {
+			margin-bottom: 1.5em;
+		}
+		@include breakpoint( $break-md ) {
+			@include span( 6 of 12 0.3 after );
+			margin-bottom: 1.5em;
+			margin-right: 0;
+			&:nth-of-type( 3n ) {
+				clear: left;
+			}
+			&:nth-of-type( 2n ) {
+				clear: right;
+			}
+		}
+		a {
+			display: block;
+			&, &:hover {
+				color: $white;
+			}
+		}
+		h4 {
+			@include font-size( 1.5 );
+		}
+		> div {
+			@include susy-clearfix();
+			border-radius: 3px;
+			padding: 1.5em;
+			background-color: rgba( 0, 0, 0, 0.03 );
+			box-shadow: inset 0 0 8px rgba( 0, 0, 0, 0.1 );
+			@include breakpoint( $break-md ) {
+				@include post( 0.75em );
+			}
+		}
+		&:nth-of-type( even ) {
+			> div {
+				@include breakpoint( $break-md ) {
+					@include pre( 0.75em );
+					@include post( 0 );
+				}
+			}
+		}
+		.portrait {
+			@include breakpoint( $break-md ) {
+				@include span( 4 of 12 );
+			}
+			.wp-post-image {
+				margin-bottom: 0;
+			}
+		}
+		.details {
+			@include breakpoint( $break-md ) {
+				@include span( 8 of 12 );
+				padding-left: 1.5em;
+				margin: 0;
+			}
+		}
+	}
+	.hp-coach {
+		color: inherit;
+		display: block;
+	}
+	.teams {
+		h3 {
+			text-shadow: 0 0 2px $black;
+		}
+		article {
+			@include breakpoint( $break-only-sm ) {
+				margin-bottom: 1.5em;
+			}
+			@include breakpoint( $break-md ) {
+				@include span( 4 of 12 0.3 after );
+				&:last-of-type {
+					margin-right: 0;
+				}
+			}
+				> a {
+					display: block;
+					background-color: rgba(255, 255, 255, 0.1);
+					padding: 1.5em;
+					border-radius: 3px;
+					&, &:hover {
+						text-decoration: none;
+						color: $white;
+					}
+					&:hover {
+						background-color: rgba(255, 255, 255, 0.12);
+					}
+				}
+		}
+	}
+	.sponsors {
+		article {
+			@include breakpoint( $break-md ) {
+				@include span( 4 of 12 0.3 after );
+				&:last-of-type {
+					margin-right: 0;
+				}
+				> a {
+					display: block;
+					background-color: rgba(255, 255, 255, 0.1);
+					padding: 1.5em;
+					border-radius: 3px;
+					&, &:hover {
+						text-decoration: none;
+						color: $white;
+					}
+					&:hover {
+						background-color: rgba(255, 255, 255, 0.12);
+					}
+				}
+				.logo {
+					text-align: center;
+				}
+			}
+		}
+	}
+	.sponsor {
+		@include breakpoint( $break-md ) {
+			padding: 1.5em;
+			@include span( 3 of 12 );
+			min-height: 230px;
+		}
+	}
 }

@@ -76,11 +76,11 @@ if ( ! class_exists( 'MBB_FAQs' ) ) :
 					'media_buttons'	=> false,
 					'editor_height'	=> '500px',
 					'required'		=> true,
-		        ],
-		    ] );
+				],
+			] );
 			$fm->add_meta_box( 'FAQ Answer', $this->post_type );
 
-			MBB_Admin()->set_enter_title_here_text( "Enter the frequently asked question here" );
+			MBB_Admin()->set_enter_title_here_text( 'Enter the frequently asked question here' );
 		}
 	}
 
