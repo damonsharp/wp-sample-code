@@ -11,10 +11,23 @@ if ( ! class_exists( 'MBB_FAQs' ) ) :
 	 */
 	class MBB_FAQs {
 
+		/**
+		 * The post type.
+		 *
+		 * @var string the post type.
+		 */
 		private $post_type = 'faqs';
 
+		/**
+		 * Instance of the class.
+		 *
+		 * @var MBB_FAQs $instance
+		 */
 		private static $instance;
 
+		/**
+		 * MBB_FAQs constructor.
+		 */
 		private function __construct() {
 			/* Don't do anything, needs to be initialized via instance() method */
 		}
@@ -22,7 +35,7 @@ if ( ! class_exists( 'MBB_FAQs' ) ) :
 		/**
 		 * Create one instance of the class
 		 *
-		 * @return object instance of the class
+		 * @return MBB_FAQs instance of the class
 		 */
 		public static function instance() {
 			if ( ! isset( self::$instance ) ) {
@@ -34,8 +47,6 @@ if ( ! class_exists( 'MBB_FAQs' ) ) :
 
 		/**
 		 * Fire off custom post type creation, etc. here
-		 *
-		 * @return void
 		 */
 		public function setup() {
 			MBB_Data_Structures()->add_post_type( $this->post_type, [
@@ -57,20 +68,18 @@ if ( ! class_exists( 'MBB_FAQs' ) ) :
 				'show_in_nav_menus'	=> false,
 				'show_tagcloud'		=> false,
 				'show_admin_column'	=> true,
-				'description'		=> 'FAQ sections allow for displaying specific questions/answers within certain sections for display.',
+				'description'		=> 'FAQ sections allow for grouping specific questions/answers for display.',
 			] );
 		}
 
 		/**
 		 * Fire off the meta box, etc. creation here
-		 *
-		 * @return void
 		 */
 		public function init() {
 			$fm = new Fieldmanager_RichTextArea( [
-				'name'				=> 'faq_answer',
-				'buttons_1'			=> [ 'bold', 'italic', 'bullist', 'numlist', 'link', 'unlink' ],
-				'buttons_2'			=> [],
+				'name' => 'faq_answer',
+				'buttons_1' => [ 'bold', 'italic', 'bullist', 'numlist', 'link', 'unlink' ],
+				'buttons_2'	=> [],
 				'editor_settings'	=> [
 					'quicktags'		=> false,
 					'media_buttons'	=> false,
