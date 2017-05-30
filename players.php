@@ -5,7 +5,7 @@
 	<article class="player">
 		<div class="portrait-container">
 			<?php if ( has_post_thumbnail() ) : ?>
-				<?php the_post_thumbnail( 'large' ); ?>
+				<?php the_post_thumbnail( 'medium' ); ?>
 			<?php else : ?>
 				<img class="wp-post-image" src="<?php echo bloginfo( 'template_directory' ); ?>/assets/img/placeholder.jpg" alt="placeholder image">
 			<?php endif; ?>
@@ -18,10 +18,10 @@
 					<?php echo wp_kses_post( $player_meta['bio']['bio'] ); ?>
 				</p>
 			<?php endif; ?>
-			<?php if ( ! empty( $player_meta['details']['grade'] ) ) : ?>
+			<?php if ( ! empty( $player_meta['details']['grad_year'] ) ) : ?>
 				<p>
 					<strong>Grade:</strong>
-					<?php echo esc_html( ucwords( $player_meta['details']['grade'] ) ); ?>
+					<?php echo esc_html( ucwords( MBB_Helpers()->get_current_grade_level( $player_meta['details']['grad_year'] ) ) ); ?>
 				</p>
 			<?php endif; ?>
 			<?php if ( ! empty( $player_meta['details']['positions'] ) ) : ?>
