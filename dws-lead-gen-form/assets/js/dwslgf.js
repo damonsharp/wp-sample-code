@@ -1,6 +1,6 @@
 (function($) {
 	$(function() {
-		$('#dwslgf-form').on( 'submit', function(e) {
+		$('.dwslgf-form').on( 'submit', function(e) {
 			e.preventDefault();
 			var submissionFormData = $(this).serialize();
 			var form = $(this);

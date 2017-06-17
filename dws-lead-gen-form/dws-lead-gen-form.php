@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: DWS Lead Generation Form
- * Description: Plugin Shortcode POC
+ * Description: Plugin Test for Elegant Themes
  * Version: 1.0.0
  * Author: Damon Sharp
  * Author URI: http://damonsharp.me

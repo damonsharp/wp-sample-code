@@ -1,16 +1,16 @@
-form > div {
+.dwslgf-form > div {
 	margin-bottom: 2em;
 }
 
-.form-msg {
+.dwslgf-form .form-msg {
 	color: #FFFFFF;
 	padding: 1em;
 }
 
-form .error {
+.dwslgf-form .error {
 	background-color: #980000;
 }
 
-form .success {
+.dwslgf-form .success {
 	background-color: #259832;
 }
