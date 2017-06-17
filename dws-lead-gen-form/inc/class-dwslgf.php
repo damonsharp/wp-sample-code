@@ -90,7 +90,7 @@ if ( ! class_exists( 'DWSLGF' ) ) :
 			$dt = Carbon\Carbon::now( $timezone );
 
 			?>
-			<form id="dwslgf-form" method="POST">
+			<form class="dwslgf-form" method="POST">
 				<p>All fields required.</p>
 				<div>
 					<label for="dwslgf-name"><?php echo esc_html( $attributes['name_label'] ); ?></label>

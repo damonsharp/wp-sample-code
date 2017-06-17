@@ -1,13 +1,12 @@
-# Lead Generation Shortcode Proof of Concept
-
-This is a WordPress plugin proof of concept showing how to add a lead generation form, with submission via ajax, through a shortcode interface and storage within a "Customer" custom post type. Certain aspects of the shortcode can be customized via custom attributes as shown below...
+# Lead Generation Shortcode Test
 
 ### Shortcode usage
+Place the following shortcode within post, page, or text widget content...
 
-- [dws_lead_gen_form]
+[dws_lead_gen_form]
 
 ### Shortcode Attributes
-The following attributes can be used to control the form's output...
+The following attributes can be used to control the shortcode's output...
 
 - name_label: change the name field label
 - name_maxlength: change the name field maxlength
