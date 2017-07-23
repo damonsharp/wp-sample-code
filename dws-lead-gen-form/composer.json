@@ -1,0 +1,28 @@
+{
+    "name": "damonsharp/dws-lead-gen-form",
+    "type": "package",
+    "authors": [
+        {
+            "name": "Damon Sharp",
+            "email": "damon.sharp@gmail.com"
+        }
+    ],
+    "require": {
+        "nesbot/carbon": "^1.22",
+        "alleyinteractive/wordpress-fieldmanager": "^1.0.0"
+    },
+    "autoload": {
+        "classmap": [
+            "inc"
+        ],
+        "files": [
+            "vendor/alleyinteractive/wordpress-fieldmanager/fieldmanager.php"
+        ]
+    },
+    "repositories": [
+        {
+            "url": "https://github.com/alleyinteractive/wordpress-fieldmanager",
+            "type": "vcs"
+        }
+    ]
+}
