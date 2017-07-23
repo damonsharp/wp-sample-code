@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: DWS Lead Generation Form
- * Description: Plugin Test for Elegant Themes
+ * Description: Plugin POC for Review
  * Version: 1.0.0
  * Author: Damon Sharp
  * Author URI: http://damonsharp.me
@@ -29,10 +29,15 @@ if ( ! defined( 'DWSLGF_PREFIX' ) ) {
 	define( 'DWSLGF_PREFIX', 'dwslgf' );
 }
 
-add_action( 'after_setup_theme', function () {
-	require_once( DWSLGF_PLUGIN_INC_DIR . 'libraries/Carbon/src/Carbon/Carbon.php' );
-	require_once( DWSLGF_PLUGIN_INC_DIR . 'libraries/wordpress-fieldmanager/fieldmanager.php' );
-	require_once( DWSLGF_PLUGIN_INC_DIR . 'class-dwslgf-data-structures.php' );
-	require_once( DWSLGF_PLUGIN_INC_DIR . 'class-dwslgf-customer.php' );
-	require_once( DWSLGF_PLUGIN_INC_DIR . 'class-dwslgf.php' );
-} );
+/**
+ * Let's get this shortcode party started!
+ */
+function dwslgf_plugin_setup() {
+	require_once( 'vendor/autoload.php' );
+
+	( new DWSLGF\DWSLGF() )->init();
+	( new DWSLGF\Customer() )->setup();
+}
+
+add_action( 'after_setup_theme', 'dwslgf_plugin_setup' );
+
