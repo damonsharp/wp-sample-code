@@ -1,4 +1,12 @@
-# Lead Generation Shortcode Test
+# Lead Generation Shortcode POC
+WordPress plugin proof of concept that will provide a customizable shortcode for use on a page, post, or text widget. This shortcode outputs a lead generation form which the user can submit via AJAX and will sanitize and save the data within a "Customer" custom post type in the WordPress admin.
+
+##### Highlights
+- OOP/Composer architecture.
+- Integration of third party meta field plugin (Fieldmanager);
+- Custom Post Type and custom meta fields usage for Customers.
+- Form submission via AJAX and storage within a custom post type.
+- Functionality to give admins the ability to utilize the shortcode inside text widget areas.
 
 ### Shortcode usage
 Place the following shortcode within post, page, or text widget content...
