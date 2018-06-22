@@ -9,20 +9,28 @@
     ],
     "require": {
         "nesbot/carbon": "^1.22",
-        "alleyinteractive/wordpress-fieldmanager": "^1.0.0"
+        "alleyinteractive/wordpress-fieldmanager": "dev-master"
     },
     "autoload": {
         "classmap": [
             "inc"
         ],
         "files": [
-            "vendor/alleyinteractive/wordpress-fieldmanager/fieldmanager.php"
+            "vendor/wordpress-fieldmanager/fieldmanager.php"
         ]
     },
     "repositories": [
         {
-            "url": "https://github.com/alleyinteractive/wordpress-fieldmanager",
-            "type": "vcs"
+            "type": "git",
+            "url": "https://github.com/damonsharp/wordpress-fieldmanager.git"
         }
-    ]
+    ],
+    "minimum-stability": "dev",
+    "extra": {
+        "installer-paths": {
+            "vendor/{$name}": [
+                "alleyinteractive/wordpress-fieldmanager"
+            ]
+        }
+    }
 }
