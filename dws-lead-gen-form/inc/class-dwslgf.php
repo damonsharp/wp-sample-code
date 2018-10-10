@@ -69,37 +69,28 @@ class DWSLGF {
 			<p>All fields required.</p>
 			<div>
 				<label for="dwslgf-name"><?php echo esc_html( $attributes['name_label'] ); ?></label>
-				<input id="dwslgf-name" type="text" name="dwslgf_name"
-					   maxlength="<?php echo esc_attr( $attributes['name_maxlength'] ); ?>">
+				<input id="dwslgf-name" type="text" name="dwslgf_name" maxlength="<?php echo esc_attr( $attributes['name_maxlength'] ); ?>">
 			</div>
 			<div>
 				<label for="dwslgf-phone"><?php echo esc_html( $attributes['phone_label'] ); ?></label>
-				<input id="dwslgf-phone" type="text" name="dwslgf_phone"
-					   maxlength="<?php echo esc_attr( $attributes['phone_maxlength'] ); ?>">
+				<input id="dwslgf-phone" type="text" name="dwslgf_phone" maxlength="<?php echo esc_attr( $attributes['phone_maxlength'] ); ?>">
 			</div>
 			<div>
 				<label for="dwslgf-email"><?php echo esc_html( $attributes['email_label'] ); ?></label>
-				<input id="dwslgf-email" type="text" name="dwslgf_email"
-					   maxlength="<?php echo esc_attr( $attributes['email_maxlength'] ); ?>">
+				<input id="dwslgf-email" type="text" name="dwslgf_email" maxlength="<?php echo esc_attr( $attributes['email_maxlength'] ); ?>">
 			</div>
 			<div>
 				<label for="dwslgf-budget"><?php echo esc_html( $attributes['budget_label'] ); ?></label>
-				<input id="dwslgf-budget" type="text" name="dwslgf_budget"
-					   maxlength="<?php echo esc_attr( $attributes['budget_maxlength'] ); ?>">
+				<input id="dwslgf-budget" type="text" name="dwslgf_budget" maxlength="<?php echo esc_attr( $attributes['budget_maxlength'] ); ?>">
 			</div>
 			<div>
 				<label for="dwslgf-message"><?php echo esc_html( $attributes['message_label'] ); ?></label>
-				<textarea id="dwslgf-message" name="dwslgf_message"
-						  rows="<?php echo esc_attr( $attributes['message_rows'] ); ?>"
-						  cols="<?php echo esc_attr( $attributes['message_cols'] ); ?>"
-						  maxlength="<?php echo esc_attr( $attributes['message_maxlength'] ); ?>"></textarea>
+				<textarea id="dwslgf-message" name="dwslgf_message" rows="<?php echo esc_attr( $attributes['message_rows'] ); ?>" cols="<?php echo esc_attr( $attributes['message_cols'] ); ?>" maxlength="<?php echo esc_attr( $attributes['message_maxlength'] ); ?>"></textarea>
 			</div>
 			<div>
-				<button id="dwslgf-submit"
-						type="submit"><?php echo esc_html( $attributes['submit_label'] ); ?></button>
+				<button id="dwslgf-submit" type="submit"><?php echo esc_html( $attributes['submit_label'] ); ?></button>
 			</div>
-			<input type="hidden" name="dwslgf_submission_datetime"
-				   value="<?php echo esc_html( $dt->toDateTimeString() ); ?>">
+			<input type="hidden" name="dwslgf_submission_datetime" value="<?php echo esc_html( $dt->toDateTimeString() ); ?>">
 		</form>
 		<?php
 	}

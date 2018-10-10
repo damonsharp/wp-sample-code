@@ -1,12 +1,8 @@
 <?php $players = MBB_Query()->get_players(); ?>
-<?php if ( ! empty( $players ) ) : ?>
-	<?php foreach ( $players as $post ) : setup_postdata( $post ); ?>
-	<?php $player_meta = get_post_meta( $post->ID, 'player_details', true ); ?>
+<?php if ( ! empty( $players ) ) : ?><?php foreach ( $players as $post ) : setup_postdata( $post ); ?><?php $player_meta = get_post_meta( $post->ID, 'player_details', true ); ?>
 	<article class="player">
 		<div class="portrait-container">
-			<?php if ( has_post_thumbnail() ) : ?>
-				<?php the_post_thumbnail( 'medium' ); ?>
-			<?php else : ?>
+			<?php if ( has_post_thumbnail() ) : ?><?php the_post_thumbnail( 'medium' ); ?><?php else : ?>
 				<img class="wp-post-image" src="<?php echo bloginfo( 'template_directory' ); ?>/assets/img/placeholder.jpg" alt="placeholder image">
 			<?php endif; ?>
 			<h2><?php the_title(); ?></h2>

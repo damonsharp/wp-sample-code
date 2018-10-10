@@ -199,7 +199,7 @@ if ( ! class_exists( 'MBB_Admin' ) ) :
 		 * Add custom post type rss.
 		 */
 		public function add_custom_post_type_rss() {
-			$post_types = array( 'events' );
+			$post_types = [ 'events' ];
 			foreach ( $post_types as $post_type ) {
 				$feed = get_post_type_archive_feed_link( $post_type );
 				if ( '' === $feed || ! is_string( $feed ) ) {

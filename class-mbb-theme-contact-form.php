@@ -35,6 +35,7 @@ if ( ! class_exists( 'MBB_Contact_Form' ) ) :
 				self::$instance = new MBB_Contact_Form;
 				self::$instance->setup();
 			}
+
 			return self::$instance;
 		}
 
@@ -64,9 +65,9 @@ if ( ! class_exists( 'MBB_Contact_Form' ) ) :
 			if ( is_page( 'contact' ) ) {
 				wp_enqueue_script( 'mbb-contact', get_template_directory_uri() . '/assets/js/contact.min.js', [ 'jquery' ], '1.0.0', true );
 				wp_localize_script( 'mbb-contact', 'mbbContact', [
-					'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+					'ajaxUrl'     => admin_url( 'admin-ajax.php' ),
 					'loadingIcon' => esc_url( site_url( 'wp-content/themes/monarchbaseball/assets/img/loading.svg' ) ),
-					'action' => 'process_contact_form',
+					'action'      => 'process_contact_form',
 				] );
 			}
 		}
@@ -78,8 +79,8 @@ if ( ! class_exists( 'MBB_Contact_Form' ) ) :
 		 */
 		public function process_contact_form() {
 			wp_verify_nonce( $_POST['_contact_nonce'], 'process_contact_form' );
-			$errors  = [];
-			$data    = [];
+			$errors          = [];
+			$data            = [];
 			$input_whitelist = [
 				'fname',
 				'lname',
@@ -130,22 +131,23 @@ if ( ! class_exists( 'MBB_Contact_Form' ) ) :
 		 * Send email message
 		 *
 		 * @param array $data $_POST data
+		 *
 		 * @return void
 		 */
 		public function send_msg( $data ) {
 			// Compose email to MBB
-			$msg = stripslashes( $data['msg'] );
-			$fname = stripslashes( $data['fname'] );
-			$lname = stripslashes( $data['lname'] );
-			$email = $data['email'];
-			$payload = [];
-			$subject = 'Message from monarchbaseball.com';
-			$to = sanitize_email( ( ! empty( $this->contact_form_settings['send_to'] ) ) ? $this->contact_form_settings['send_to'] : 'damon.sharp@gmail.com' );
-			$msg = wp_kses_post( sprintf( "The following message was sent through the monarchbaseball.com website.\n\n%s\n\nRegards,\n\n%s %s", $msg, $fname, $lname ) );
+			$msg       = stripslashes( $data['msg'] );
+			$fname     = stripslashes( $data['fname'] );
+			$lname     = stripslashes( $data['lname'] );
+			$email     = $data['email'];
+			$payload   = [];
+			$subject   = 'Message from monarchbaseball.com';
+			$to        = sanitize_email( ( ! empty( $this->contact_form_settings['send_to'] ) ) ? $this->contact_form_settings['send_to'] : 'damon.sharp@gmail.com' );
+			$msg       = wp_kses_post( sprintf( "The following message was sent through the monarchbaseball.com website.\n\n%s\n\nRegards,\n\n%s %s", $msg, $fname, $lname ) );
 			$headers[] = "From: Monarch Baseball <{$this->contact_form_settings['sent_from']}>";
 			$headers[] = sprintf( 'Reply-to: %s %s <%s>', $fname, $lname, $email );
 
-			$mbb_email_sent	= wp_mail( $to, $subject, $msg, $headers );
+			$mbb_email_sent = wp_mail( $to, $subject, $msg, $headers );
 
 			// Email to monarch baseball sent, so let's return a payload
 			// to show a message to the user.

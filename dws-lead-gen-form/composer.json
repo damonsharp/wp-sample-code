@@ -1,36 +1,36 @@
 {
-    "name": "damonsharp/dws-lead-gen-form",
-    "type": "package",
-    "authors": [
-        {
-            "name": "Damon Sharp",
-            "email": "damon.sharp@gmail.com"
-        }
-    ],
-    "require": {
-        "nesbot/carbon": "^1.22",
-        "alleyinteractive/wordpress-fieldmanager": "dev-master"
-    },
-    "autoload": {
-        "classmap": [
-            "inc"
-        ],
-        "files": [
-            "vendor/wordpress-fieldmanager/fieldmanager.php"
-        ]
-    },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/damonsharp/wordpress-fieldmanager.git"
-        }
-    ],
-    "minimum-stability": "dev",
-    "extra": {
-        "installer-paths": {
-            "vendor/{$name}": [
-                "alleyinteractive/wordpress-fieldmanager"
-            ]
-        }
+  "name": "damonsharp/dws-lead-gen-form",
+  "type": "package",
+  "authors": [
+    {
+      "name": "Damon Sharp",
+      "email": "damon.sharp@gmail.com"
     }
+  ],
+  "require": {
+    "nesbot/carbon": "^1.22",
+    "alleyinteractive/wordpress-fieldmanager": "dev-master"
+  },
+  "autoload": {
+    "classmap": [
+      "inc"
+    ],
+    "files": [
+      "vendor/wordpress-fieldmanager/fieldmanager.php"
+    ]
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/damonsharp/wordpress-fieldmanager.git"
+    }
+  ],
+  "minimum-stability": "dev",
+  "extra": {
+    "installer-paths": {
+      "vendor/{$name}": [
+        "alleyinteractive/wordpress-fieldmanager"
+      ]
+    }
+  }
 }

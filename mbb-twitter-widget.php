@@ -7,11 +7,11 @@ if ( ! class_exists( 'MBB_Widget_Tweets' ) ) :
 	 */
 	class MBB_Widget_Tweets extends WP_Widget {
 
-		private $widget_slug  = 'mbb_widget_tweets';
+		private $widget_slug = 'mbb_widget_tweets';
 
 		private $widget_title = 'MBB Latest Tweets';
 
-		private $widget_desc  = 'Displays tweets from the Monarch Baseball account';
+		private $widget_desc = 'Displays tweets from the Monarch Baseball account';
 
 		/**
 		 * Sets up the widgets name etc
@@ -30,7 +30,7 @@ if ( ! class_exists( 'MBB_Widget_Tweets' ) ) :
 		 * @param array $instance
 		 */
 		public function widget( $args, $instance ) {
-			$count = ( ! empty( $instance['tweet_count'] ) ) ? intval( $instance['tweet_count'] ) : 0;
+			$count  = ( ! empty( $instance['tweet_count'] ) ) ? intval( $instance['tweet_count'] ) : 0;
 			$tweets = MBB_Twitter()->get_tweets( $count, "{$this->widget_slug}-{$args['id']}" );
 			require_once( MBB_PLUGIN_DIR . 'template-parts/widgets/tweets.php' );
 		}
@@ -52,14 +52,13 @@ if ( ! class_exists( 'MBB_Widget_Tweets' ) ) :
 			}
 			$tweet_count = intval( $tweet_count );
 			?>
-				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">Widget Title</label>
-					<input id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" class="widefat" type="text" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $title ); ?>">
-				</p>
-				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'tweet_count' ) ); ?>">Number of tweets to display:</label>
-					<input id="<?php echo esc_attr( $this->get_field_id( 'tweet_count' ) ); ?>" type="text" name="<?php echo esc_attr( $this->get_field_name( 'tweet_count' ) ); ?>" value="<?php echo esc_attr( $tweet_count ); ?>" size="4" maxlength="2">
-				</p>
+			<p>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">Widget Title</label>
+				<input id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" class="widefat" type="text" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $title ); ?>">
+			</p>				<p>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'tweet_count' ) ); ?>">Number of tweets to display:</label>
+				<input id="<?php echo esc_attr( $this->get_field_id( 'tweet_count' ) ); ?>" type="text" name="<?php echo esc_attr( $this->get_field_name( 'tweet_count' ) ); ?>" value="<?php echo esc_attr( $tweet_count ); ?>" size="4" maxlength="2">
+			</p>
 			<?php
 		}
 
@@ -68,6 +67,8 @@ if ( ! class_exists( 'MBB_Widget_Tweets' ) ) :
 		 *
 		 * @param array $new_instance The new options
 		 * @param array $old_instance The previous options
+		 *
+		 * @return array
 		 */
 		public function update( $new_instance, $old_instance ) {
 			// Clear transient if updating count
@@ -76,9 +77,10 @@ if ( ! class_exists( 'MBB_Widget_Tweets' ) ) :
 				delete_transient( 'tweets' );
 			}
 			// Process form values
-			$instance = $old_instance;
-			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? wp_strip_all_tags( $new_instance['title'] ) : '';
+			$instance                = $old_instance;
+			$instance['title']       = ( ! empty( $new_instance['title'] ) ) ? wp_strip_all_tags( $new_instance['title'] ) : '';
 			$instance['tweet_count'] = ( ! empty( $new_instance['tweet_count'] ) ) ? intval( $new_instance['tweet_count'] ) : '';
+
 			return $instance;
 		}
 	}
