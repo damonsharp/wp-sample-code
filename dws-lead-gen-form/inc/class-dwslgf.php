@@ -2,7 +2,6 @@
 
 namespace DWSLGF;
 
-use Carbon\Carbon;
 use const DWSLGF_PREFIX;
 
 /**
@@ -61,9 +60,6 @@ class DWSLGF {
 			$timezone = 'America/New_York';
 		}
 
-		// User Carbon library for date/time.
-		$dt = Carbon::now( $timezone );
-
 		ob_start();
 		?>
 		<form class="dwslgf-form" method="POST">
@@ -91,7 +87,7 @@ class DWSLGF {
 			<div>
 				<button id="dwslgf-submit" type="submit"><?php echo esc_html( $attributes['submit_label'] ); ?></button>
 			</div>
-			<input type="hidden" name="dwslgf_submission_datetime" value="<?php echo esc_html( $dt->toDateTimeString() ); ?>">
+			<input type="hidden" name="dwslgf_submission_datetime" value="<?php echo esc_html( wp_date( DATE_RFC3339, time() ) ); ?>">
 		</form>
 		<?php
 
