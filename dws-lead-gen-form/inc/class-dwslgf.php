@@ -64,6 +64,7 @@ class DWSLGF {
 		// User Carbon library for date/time.
 		$dt = Carbon::now( $timezone );
 
+		ob_start();
 		?>
 		<form class="dwslgf-form" method="POST">
 			<p>All fields required.</p>
@@ -93,6 +94,8 @@ class DWSLGF {
 			<input type="hidden" name="dwslgf_submission_datetime" value="<?php echo esc_html( $dt->toDateTimeString() ); ?>">
 		</form>
 		<?php
+
+		return ob_get_clean();
 	}
 
 	/**
