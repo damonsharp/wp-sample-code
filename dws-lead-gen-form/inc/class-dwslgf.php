@@ -88,6 +88,7 @@ class DWSLGF {
 				<button id="dwslgf-submit" type="submit"><?php echo esc_html( $attributes['submit_label'] ); ?></button>
 			</div>
 			<input type="hidden" name="dwslgf_submission_datetime" value="<?php echo esc_html( wp_date( DATE_RFC3339, time() ) ); ?>">
+			<?php wp_nonce_field( 'dwslgf', 'security' ); ?>
 		</form>
 		<?php
 
@@ -115,7 +116,6 @@ class DWSLGF {
 		wp_localize_script( 'dwslgf-submit', 'dwslgf', [
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
 			'action'   => 'dwslgf',
-			'nonce'    => wp_create_nonce( 'dwslgf_nonce' ),
 		] );
 	}
 
@@ -138,7 +138,7 @@ class DWSLGF {
 	 * shortcode output.
 	 */
 	public function process_dwslgf_submission() {
-		check_ajax_referer( 'dwslgf_nonce' );
+		check_ajax_referer( 'dwslgf', 'security' );
 		$post_data       = [];
 		$errors          = [];
 		$field_whitelist = [
@@ -166,7 +166,7 @@ class DWSLGF {
 		}
 
 		if ( ! empty( $errors ) ) {
-			wp_send_json_error( [ 'msg' => __( 'Please check the fields below and re-submit!', 'dwslgf' ) ] );
+			wp_send_json_error( [ 'msg' => __( 'Please check the fields above and re-submit!', 'dwslgf' ) ] );
 		} else {
 			$post_id = wp_insert_post( [
 				'post_title'  => $post_data['dwslgf_name'],
@@ -175,6 +175,8 @@ class DWSLGF {
 			], true );
 
 			if ( ! is_wp_error( $post_id ) ) {
+				// Remove the name as we're not storing that as post meta. It's already
+				// stored as the post title above.
 				unset( $post_data['dwslgf_name'] );
 				foreach ( $post_data as $meta_key => $meta_value ) {
 					add_post_meta( $post_id, $meta_key, $meta_value );

@@ -8,7 +8,6 @@
     }
   ],
   "require": {
-    "nesbot/carbon": "^1.22",
     "alleyinteractive/wordpress-fieldmanager": "dev-master"
   },
   "autoload": {

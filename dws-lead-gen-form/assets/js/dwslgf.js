@@ -4,7 +4,7 @@
 			e.preventDefault();
 			var submissionFormData = $( this ).serialize();
 			var form = $( this );
-			var formData = 'action=' + dwslgf.action + '&_ajax_nonce=' + dwslgf.nonce + '&' + submissionFormData;
+			var formData = 'action=' + dwslgf.action + '&' + submissionFormData;
 			var formBtn = $( '#dwslgf-submit' );
 			form.find( '.form-msg' ).remove();
 			formBtn.attr( 'disabled', true );
@@ -22,7 +22,8 @@
 					}
 					form.append( '<p class="form-msg ' + className + '">' + data.data.msg + '</p>' );
 					formBtn.attr( 'disabled', false );
-				}
+				},
+				dataType: 'json'
 			} );
 		} );
 
